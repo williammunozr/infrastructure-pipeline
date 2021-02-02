@@ -8,22 +8,6 @@ variable "github_organization" {
   description = "Github organization"
 }
 
-variable "azure_subscription_id" {
-  type = string
-}
-
-variable "azure_tenant_id" {
-  type = string
-}
-
-variable "azure_client_id" {
-  type = string
-}
-
-variable "azure_client_secret" {
-  type = string
-}
-
 variable "aws_access_key_id" {
   type = string
 }
@@ -50,10 +34,4 @@ variable "pipeline_name" {
   type        = string
   description = "Name of pipeline for Vault AppRole"
   default     = "infrastructure-pipeline"
-}
-
-variable "location" {
-  type        = string
-  description = "Azure location"
-  default     = "West US"
 }

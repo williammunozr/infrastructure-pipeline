@@ -33,28 +33,6 @@ resource "vault_generic_secret" "database" {
 EOT
 }
 
-// Azure Secrets Engine
-
-resource "vault_azure_secret_backend" "azure" {
-  subscription_id = var.azure_subscription_id
-  tenant_id       = var.azure_tenant_id
-  client_id       = var.azure_client_id
-  client_secret   = var.azure_client_secret
-  path            = "${var.resource_group}/azure"
-}
-
-resource "vault_azure_secret_backend_role" "pipeline" {
-  backend = vault_azure_secret_backend.azure.path
-  role    = "pipeline"
-  ttl     = 1800
-  max_ttl = 3600
-
-  azure_roles {
-    role_name = "Contributor"
-    scope     = "/subscriptions/${var.azure_subscription_id}/resourceGroups/${azurerm_resource_group.team.name}"
-  }
-}
-
 // Database secrets engine for PostgreSQL
 
 resource "vault_mount" "database" {
