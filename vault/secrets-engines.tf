@@ -52,7 +52,7 @@ resource "vault_aws_secret_backend_role" "role" {
   backend         = vault_aws_secret_backend.aws.path
   name            = "pipeline"
   credential_type = "assumed_role"
-  role_arns       = var.aws_role_arns
+  role_arns       = [var.aws_role_arns]
   default_sts_ttl = 1800
   max_sts_ttl     = 3600
 }

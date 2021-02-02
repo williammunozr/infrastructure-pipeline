@@ -17,7 +17,7 @@ variable "aws_secret_access_key" {
 }
 
 variable "aws_role_arns" {
-  type = list(string)
+  type = string
 }
 
 variable "terraform_cloud_token" {
